@@ -1,0 +1,10 @@
+Package: metamorphy-fauchies
+Version: 1.1
+Architecture: all
+Maintainer: NekoMimi (nekomimi@tilde.team)
+Installed-Size: 1.5
+Depends: python3 python3-pip xwallpaper
+Section: extras
+priority: optional
+Homepage: nekomimi.tilde.team
+Description: A wallpaper engine to be used with Window Managers

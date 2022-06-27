@@ -1,0 +1,48 @@
+#!/bin/python3
+import sys
+try:
+    import nekos as n
+    import NekoMimi as nm
+except EXCEPTION:
+    print('NekoMimi and nekos.py arent both present , please install them using pip')
+    sys.exit(0)
+import subprocess
+import time
+from os import path
+
+print(nm.figlet("Metamorphy","small"))
+print('Made by NekoMimi with <3')
+
+engineZ = "xwallpaper --zoom "
+homeDir = subprocess.getoutput(f'bash -c "echo $HOME"')
+config = f"{homeDir}/.config/metamorphy-fauchies/config.txt"
+defaultConfig = [0,10]
+style = defaultConfig[0]
+interval = defaultConfig[1]
+
+def fix():
+    style = defaultConfig[0]
+    interval = defaultConfig[1]
+    print(f"No config file found\n{config}\nfile not found\nreverting to default values\nstyle : {style}\ninterval : {interval}")
+
+if path.exists(config):
+    print("Loading from config file...")
+    base = nm.ReadFromFile(config)
+    lines = base.split("\n")
+    for a in lines:
+        if a.startswith('style'):
+            style = int(a.split(' ')[1])
+        if a.startswith('interval'):
+            interval = int(a.split(' ')[1])
+    print(f'style : {style}\ninterval : {interval}')
+else:
+    fix()
+
+while True:
+    catalog = ["fox_girl","neko"]
+    backgroundURL = n.img(target=catalog[style])
+    subprocess.getoutput(f'bash -c "rm $HOME/.cache/bg.png"')
+    print(f'Downloading image {backgroundURL}')
+    subprocess.getoutput(f'bash -c "wget {backgroundURL} -O $HOME/.cache/bg.png"')
+    subprocess.getoutput(f'bash -c "{engineZ}$HOME/.cache/bg.png"')
+    time.sleep(interval)
