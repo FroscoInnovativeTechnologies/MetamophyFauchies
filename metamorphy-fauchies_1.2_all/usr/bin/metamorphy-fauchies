@@ -19,7 +19,7 @@ homeDir = subprocess.getoutput(f'bash -c "echo $HOME"')
 config = f"{homeDir}/.config/metamorphy-fauchies/config.txt"
 catalog = ["fox_girl","neko"]
 providers = ["local","nekos","bing"]
-defaultConfig = [1,0,10]
+defaultConfig = [39,0,10]
 provider = defaultConfig[0]
 style = defaultConfig[1]
 interval = defaultConfig[2]
@@ -79,9 +79,17 @@ def nekosprov():
         subprocess.getoutput(f'bash -c "{engineZ}$HOME/.cache/bg.png"')
         time.sleep(interval)
 
+def specialIMG():
+    subprocess.getoutput(f'bash -c "rm $HOME/.cache/bg.png"')
+    print(f'Have a nice EasterEgg , not really hidden since the code is open though')
+    subprocess.getoutput(f'bash -c "wget http://ttm.sh/wYW.png -O $HOME/.cache/bg.png"')
+    subprocess.getoutput(f'bash -c "{engineZ}$HOME/.cache/bg.png"')
+
 if provider == 0:
     localprov()
 elif provider == 1:
     nekosprov()
 elif provider == 2:
     print('bing wallpapers arent implemented yet')
+elif provider == 39:
+    specialIMG()
