@@ -55,6 +55,11 @@ if path.exists(config):
 else:
     fix()
 
+if provider == 0:
+    localprov()
+elif provider == 1:
+    nekosprov()
+
 def localprov():
     localDIR = "$HOME/Pictures/metamorphy-fauchies/"
     localDIR = subprocess.getoutput(f'bash -c "echo {localDIR}"')
