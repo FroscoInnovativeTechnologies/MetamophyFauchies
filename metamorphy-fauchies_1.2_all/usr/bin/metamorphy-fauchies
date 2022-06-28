@@ -82,3 +82,5 @@ if provider == 0:
     localprov()
 elif provider == 1:
     nekosprov()
+elif provider == 2:
+    print('bing wallpapers arent implemented yet')
