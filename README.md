@@ -5,6 +5,7 @@ to build this app to an installable DEB file simply run `dpkg -b metamorphy-fauc
 
 the default config.txt contains
 ```
+ provider 1
  style 0
  interval 30
 ```
