@@ -10,7 +10,8 @@ from os import path
 from os import listdir
 from os.path import isfile
 
-print(nm.figlet("Metamorphy","larry3d"))
+print(nm.figlet("Metamorphy","slant"))
+print(nm.figlet("Fauchies","larry3d"))
 print('Made by NekoMimi with <3')
 
 engineZ = "xwallpaper --zoom "
