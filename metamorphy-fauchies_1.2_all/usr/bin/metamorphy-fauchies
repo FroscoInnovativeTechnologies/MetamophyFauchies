@@ -16,33 +16,49 @@ print('Made by NekoMimi with <3')
 engineZ = "xwallpaper --zoom "
 homeDir = subprocess.getoutput(f'bash -c "echo $HOME"')
 config = f"{homeDir}/.config/metamorphy-fauchies/config.txt"
-defaultConfig = [0,10]
-style = defaultConfig[0]
-interval = defaultConfig[1]
+catalog = ["fox_girl","neko"]
+providers = ["local","nekos","bing"]
+defaultConfig = [1,0,10]
+provider = defaultConfig[0]
+style = defaultConfig[1]
+interval = defaultConfig[2]
 
 def fix():
     style = defaultConfig[0]
     interval = defaultConfig[1]
-    print(f"No config file found\n{config}\nfile not found\nreverting to default values\nstyle : {style}\ninterval : {interval}")
+    print(f"No config file found\n{config}\nfile not found\nreverting to default values\nprovider : {provider}\nstyle : {style}\ninterval : {interval}")
 
 if path.exists(config):
     print("Loading from config file...")
     base = nm.ReadFromFile(config)
     lines = base.split("\n")
     for a in lines:
+        if a.startswith('provider'):
+            provider = int(a.split(' ')[1])
         if a.startswith('style'):
             style = int(a.split(' ')[1])
         if a.startswith('interval'):
             interval = int(a.split(' ')[1])
-    print(f'style : {style}\ninterval : {interval}')
+    print(f'provider : {provider}\nstyle : {style}\ninterval : {interval}')
 else:
     fix()
 
-while True:
-    catalog = ["fox_girl","neko"]
-    backgroundURL = n.img(target=catalog[style])
-    subprocess.getoutput(f'bash -c "rm $HOME/.cache/bg.png"')
-    print(f'Downloading image {backgroundURL}')
-    subprocess.getoutput(f'bash -c "wget {backgroundURL} -O $HOME/.cache/bg.png"')
-    subprocess.getoutput(f'bash -c "{engineZ}$HOME/.cache/bg.png"')
-    time.sleep(interval)
+def localprov():
+    localDIR = "$HOME/Pictures/metamorphy-fauchies/"
+    localDIR = subprocess.getoutput(f'bash -c "echo {localDIR}"')
+    if path.exists(localDIR):
+        pass
+    else:
+        subprocess.getoutput('bash -c "mkdir ~/Pictures/metamorphy-fauchies/"')
+    while True:
+        print("indev")
+        sleep(interval)
+
+def nekosprov():
+    while True:
+        backgroundURL = n.img(target=catalog[style])
+        subprocess.getoutput(f'bash -c "rm $HOME/.cache/bg.png"')
+        print(f'Downloading image {backgroundURL}')
+        subprocess.getoutput(f'bash -c "wget {backgroundURL} -O $HOME/.cache/bg.png"')
+        subprocess.getoutput(f'bash -c "{engineZ}$HOME/.cache/bg.png"')
+        time.sleep(interval)
