@@ -69,9 +69,6 @@ def localprov():
         print(f'setting {localDIR+pickedIMG} as wallpaper')
         time.sleep(interval)
 
-#test
-localprov()
-
 def nekosprov():
     while True:
         backgroundURL = n.img(target=catalog[style])
