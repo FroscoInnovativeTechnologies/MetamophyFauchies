@@ -55,11 +55,6 @@ if path.exists(config):
 else:
     fix()
 
-if provider == 0:
-    localprov()
-elif provider == 1:
-    nekosprov()
-
 def localprov():
     localDIR = "$HOME/Pictures/metamorphy-fauchies/"
     localDIR = subprocess.getoutput(f'bash -c "echo {localDIR}"')
@@ -82,3 +77,8 @@ def nekosprov():
         subprocess.getoutput(f'bash -c "wget {backgroundURL} -O $HOME/.cache/bg.png"')
         subprocess.getoutput(f'bash -c "{engineZ}$HOME/.cache/bg.png"')
         time.sleep(interval)
+
+if provider == 0:
+    localprov()
+elif provider == 1:
+    nekosprov()
