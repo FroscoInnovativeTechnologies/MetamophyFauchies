@@ -1,14 +1,14 @@
 #!/bin/python3
-import sys
+import sys, os, time, subprocess, random
 try:
     import nekos as n
     import NekoMimi as nm
 except EXCEPTION:
     print('NekoMimi and nekos.py arent both present , please install them using pip')
     sys.exit(0)
-import subprocess
-import time
 from os import path
+from os import listdir
+from os.path import isfile
 
 print(nm.figlet("Metamorphy","small"))
 print('Made by NekoMimi with <3')
@@ -27,6 +27,18 @@ def fix():
     style = defaultConfig[0]
     interval = defaultConfig[1]
     print(f"No config file found\n{config}\nfile not found\nreverting to default values\nprovider : {provider}\nstyle : {style}\ninterval : {interval}")
+
+def pickIMG(dir):
+    allItems = os.listdir(dir)
+    cheatArray = ""
+    x = 0
+    for a in allItems:
+        if isfile(dir+a):
+            x = x + 1
+            cheatArray = cheatArray + a + "QWERTYAZERTY"
+    filesOnly = cheatArray.split("QWERTYAZERTY")
+    filesOnly.pop(x)
+    return filesOnly
 
 if path.exists(config):
     print("Loading from config file...")
@@ -51,8 +63,14 @@ def localprov():
     else:
         subprocess.getoutput('bash -c "mkdir ~/Pictures/metamorphy-fauchies/"')
     while True:
-        print("indev")
-        sleep(interval)
+        listed = pickIMG(localDIR)
+        pickedIMG = random.choice(listed)
+        subprocess.getoutput(f'bash -c "{engineZ}{localDIR+pickedIMG}"')
+        print(f'setting {localDIR+pickedIMG} as wallpaper')
+        time.sleep(interval)
+
+#test
+localprov()
 
 def nekosprov():
     while True:
