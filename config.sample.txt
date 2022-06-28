@@ -1,0 +1,16 @@
+#This is a sample config
+#place this file in $HOME/.config/metamorphy-fauchies/ under the name config.txt
+
+#provider sets the background source
+#0 for local $HOME/Pictures/metamorphy-fauchies/
+#1 for nekos.py
+#2 for bing wallpapers
+provider 1
+
+#style is a nekos.py exclusive parameter
+#0 for fox girl
+#1 for cat girl
+style 1
+
+#interval is the time between each update set in seconds
+interval 30
