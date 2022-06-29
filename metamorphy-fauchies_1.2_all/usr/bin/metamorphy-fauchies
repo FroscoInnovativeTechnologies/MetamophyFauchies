@@ -103,7 +103,11 @@ def nekosprov():
 
 def picsumprov():
     while True:
-        print(picsumBackend(PGray,PBlur,PBlurPX,PHeight,PWidth))
+        backgroundURL = picsumBackend(PGray,PBlur,PBlurPX,PHeight,PWidth)
+        subprocess.getoutput(f'bash -c "rm $HOME/.cache/bg.png"')
+        print(f'Downloading image {backgroundURL}')
+        subprocess.getoutput(f'bash -c "wget {backgroundURL} -O $HOME/.cache/bg.png"')
+        subprocess.getoutput(f'bash -c "{engineZ}$HOME/.cache/bg.png"')
         time.sleep(interval)
 
 def specialIMG():
