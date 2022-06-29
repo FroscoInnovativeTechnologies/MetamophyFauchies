@@ -21,10 +21,16 @@ catalog = ["fox_girl","neko"]
 #GrayScale - Blur - Blur ammount - Height - Width
 picsumConf= [0,0,1,1280,800]
 providers = ["local","nekos","bing","picsum"]
-defaultConfig = [39,0,10]
+defaultConfig = [3,0,10]
 provider = defaultConfig[0]
 style = defaultConfig[1]
 interval = defaultConfig[2]
+PGray = picsumConf[0]
+PBlur = picsumConf[1]
+PBlurPX = picsumConf[2]
+PHeight = picsumConf[3]
+PWidth = picsumConf[4]
+PURL = 'https://picsum.photos/'
 
 def fix():
     provider = defaultConfig[0]
@@ -43,6 +49,19 @@ def pickIMG(dir):
     filesOnly = cheatArray.split("QWERTYAZERTY")
     filesOnly.pop(x)
     return filesOnly
+
+def picsumBackend(gray,blur,px,h,w):
+    getReq = ''
+
+    if gray == 0 and blur == 1:
+        getReq = f"?blur={str(px)}"
+    elif blur == 0 and gray == 1:
+        getReq = f"?grayscale"
+    elif blur == 1 and gray == 1:
+        getReq = f"?blur={px}&grayscale"
+
+    constructURL = PURL + f"{str(h)}/{str(w)}/" + getReq
+    return constructURL
 
 if path.exists(config):
     print("Loading from config file...")
@@ -82,6 +101,11 @@ def nekosprov():
         subprocess.getoutput(f'bash -c "{engineZ}$HOME/.cache/bg.png"')
         time.sleep(interval)
 
+def picsumprov():
+    while True:
+        print(picsumBackend(PGray,PBlur,PBlurPX,PHeight,PWidth))
+        time.sleep(interval)
+
 def specialIMG():
     subprocess.getoutput(f'bash -c "rm $HOME/.cache/bg.png"')
     print(f'Have a nice EasterEgg , not really hidden since the code is open though')
@@ -94,5 +118,7 @@ elif provider == 1:
     nekosprov()
 elif provider == 2:
     print('bing wallpapers arent implemented yet')
+elif provider == 3:
+    picsumprov()
 elif provider == 39:
     specialIMG()
