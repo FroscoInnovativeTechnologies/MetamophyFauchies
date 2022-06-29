@@ -18,15 +18,18 @@ engineZ = "xwallpaper --zoom "
 homeDir = subprocess.getoutput(f'bash -c "echo $HOME"')
 config = f"{homeDir}/.config/metamorphy-fauchies/config.txt"
 catalog = ["fox_girl","neko"]
-providers = ["local","nekos","bing"]
+#GrayScale - Blur - Blur ammount - Height - Width
+picsumConf= [0,0,1,1280,800]
+providers = ["local","nekos","bing","picsum"]
 defaultConfig = [39,0,10]
 provider = defaultConfig[0]
 style = defaultConfig[1]
 interval = defaultConfig[2]
 
 def fix():
-    style = defaultConfig[0]
-    interval = defaultConfig[1]
+    provider = defaultConfig[0]
+    style = defaultConfig[1]
+    interval = defaultConfig[2]
     print(f"No config file found\n{config}\nfile not found\nreverting to default values\nprovider : {provider}\nstyle : {style}\ninterval : {interval}")
 
 def pickIMG(dir):
