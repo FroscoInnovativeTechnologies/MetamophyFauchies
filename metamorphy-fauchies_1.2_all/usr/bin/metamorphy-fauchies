@@ -36,7 +36,7 @@ def fix():
     provider = defaultConfig[0]
     style = defaultConfig[1]
     interval = defaultConfig[2]
-    print(f"No config file found\n{config}\nfile not found\nreverting to default values\nprovider : {provider}\nstyle : {style}\ninterval : {interval}")
+    print(f"No config file found\n{config}\nfile not found\nreverting to default values\nprovider : {provider}\nstyle : {style}\ninterval : {interval}\npicsum grayscale : {PGray}\npicsum blur : {PBlur}\npicsum blur PX : {PBlurPX}\nheight : {PHeight}\nwidth : {PWidth}")
 
 def pickIMG(dir):
     allItems = os.listdir(dir)
