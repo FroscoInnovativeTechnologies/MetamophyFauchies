@@ -66,20 +66,28 @@ if path.exists(config):
     for a in lines:
         if a.startswith("provider"):
             provider = a.split(' ')[1]
+            provider = int(provider)
         if a.startswith("style"):
             style = a.split(' ')[1]
+            style = int(style)
         if a.startswith("interval"):
             interval = a.split(' ')[1]
+            interval = int(interval)
         if a.startswith("gray"):
             PGray = a.split(' ')[1]
+            PGray = int(PGray)
         if a.startswith("blur"):
             PBlur = a.split(' ')[1]
+            PBlur = int(PBlur)
         if a.startswith("blurpx"):
             PBlurPX = a.split(' ')[1]
+            PBlurPX = int(PBlurPX)
         if a.startswith("height"):
             PHeight = a.split(' ')[1]
+            PHeight = int(PHeight)
         if a.startswith("width"):
             PWidth = a.split(' ')[1]
+            PWidth = int(PWidth)
 
     print(f'provider : {provider}\nstyle : {style}\ninterval : {interval}')
 else:
