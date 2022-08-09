@@ -32,12 +32,6 @@ PHeight = picsumConf[3]
 PWidth = picsumConf[4]
 PURL = 'https://picsum.photos/'
 
-def fix():
-    provider = defaultConfig[0]
-    style = defaultConfig[1]
-    interval = defaultConfig[2]
-    print(f"No config file found\n{config}\nfile not found\nreverting to default values\nprovider : {provider}\nstyle : {style}\ninterval : {interval}\npicsum grayscale : {PGray}\npicsum blur : {PBlur}\npicsum blur PX : {PBlurPX}\nheight : {PHeight}\nwidth : {PWidth}")
-
 def pickIMG(dir):
     allItems = os.listdir(dir)
     cheatArray = ""
@@ -67,16 +61,29 @@ if path.exists(config):
     print("Loading from config file...")
     base = nm.ReadFromFile(config)
     lines = base.split("\n")
+
+    #this is temporary i swear
     for a in lines:
-        if a.startswith('provider'):
-            provider = int(a.split(' ')[1])
-        if a.startswith('style'):
-            style = int(a.split(' ')[1])
-        if a.startswith('interval'):
-            interval = int(a.split(' ')[1])
+        if a.startswith("provider"):
+            provider = a.split(' ')[1]
+        if a.startswith("style"):
+            style = a.split(' ')[1]
+        if a.startswith("interval"):
+            interval = a.split(' ')[1]
+        if a.startswith("gray"):
+            PGray = a.split(' ')[1]
+        if a.startswith("blur"):
+            PBlur = a.split(' ')[1]
+        if a.startswith("blurpx"):
+            PBlurPX = a.split(' ')[1]
+        if a.startswith("height"):
+            PHeight = a.split(' ')[1]
+        if a.startswith("width"):
+            PWidth = a.split(' ')[1]
+
     print(f'provider : {provider}\nstyle : {style}\ninterval : {interval}')
 else:
-    fix()
+    print(f"No config file found\n{config}\nfile not found\nreverting to default values\nprovider : {provider}\nstyle : {style}\ninterval : {interval}\npicsum grayscale : {PGray}\npicsum blur : {PBlur}\npicsum blur PX : {PBlurPX}\nheight : {PHeight}\nwidth : {PWidth}")
 
 def localprov():
     localDIR = "$HOME/Pictures/metamorphy-fauchies/"
