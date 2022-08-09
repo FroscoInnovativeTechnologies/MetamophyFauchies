@@ -3,10 +3,11 @@ A wallpaper engine like application for xorg WMs
 
 to build this app to an installable DEB file :
 ```
-  chmod +x metamorphy-fauchies_1.2_all/DEBIAN/postinst
-  chmod +x metamorphy-fauchies_1.2_all/usr/bin/metamorphy-fauchies
-  dpkg -b metamorphy-fauchies_1.2_all/
+  chmod +x metamorphy-fauchies_x.x_all/DEBIAN/postinst
+  chmod +x metamorphy-fauchies_x.x_all/usr/bin/metamorphy-fauchies
+  dpkg -b metamorphy-fauchies_x.x_all/
 ```
+REPLACE x WITH CORRECT VALUE
 
 the default config.txt contains
 ```
