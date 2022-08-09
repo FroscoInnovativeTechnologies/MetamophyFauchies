@@ -1,5 +1,5 @@
-metamorphy-fauchies (metamorphy-fauchies_1.1) unstable; urgency=low
+metamorphy-fauchies (metamorphy-fauchies_1.2) stable; urgency=low
 
-   * Added new sources for backgrounds including local.
+   * added more sources and improved config and stability.
 
   -- NekoMimi - 2022
